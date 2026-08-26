@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-surface text-ink font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-primary-light text-primary-dark;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition-colors duration-150 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary-dark;
+  }
+  .btn-secondary {
+    @apply btn bg-secondary text-white hover:bg-secondary-dark;
+  }
+  .btn-outline {
+    @apply btn border border-border text-ink bg-white hover:bg-surface;
+  }
+  .card {
+    @apply bg-card border border-border rounded-card shadow-card;
+  }
+  .input {
+    @apply w-full rounded-lg border border-border bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors;
+  }
+  .label {
+    @apply block text-sm font-medium text-ink mb-1.5;
+  }
+}
