@@ -2,10 +2,13 @@ const mongoose = require('mongoose');
 const dns = require('dns');
 
 // Fix for Windows / ISP DNS causing querySrv ECONNREFUSED on mongodb+srv://
-try {
-  dns.setServers(['8.8.8.8', '8.8.4.4']);
-} catch (e) {
-  // Ignore if custom DNS cannot be set
+// In Linux/cloud environments (Render), rely on the container's native /etc/resolv.conf
+if (process.platform === 'win32') {
+  try {
+    dns.setServers(['8.8.8.8', '8.8.4.4']);
+  } catch (e) {
+    // Ignore if custom DNS cannot be set
+  }
 }
 
 /**
